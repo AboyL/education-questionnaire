@@ -1,0 +1,6 @@
+<view class="wrapper">
+  <view class="list">
+    <view class="item" mark:key="{{item.key}}" mark:name="{{item.name}}" wx:for="{{list}}" wx:key="key" bind:tap="handleGoDetail">{{item.name}}</view>
+  </view>
+</view>
+<l-toast></l-toast>

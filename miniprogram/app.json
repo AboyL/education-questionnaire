@@ -1,8 +1,19 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/databaseGuide/databaseGuide"
+    "pages/login/index",
+    "pages/databaseGuide/databaseGuide",
+    "pages/course-list/index",
+    "pages/course-detail/index"
   ],
+  "usingComponents": {
+    "l-button": "/miniprogram_npm/lin-ui/button/index",
+    "l-form": "/miniprogram_npm/lin-ui/form/index",
+    "l-input": "/miniprogram_npm/lin-ui/input/index",
+    "l-form-item": "/miniprogram_npm/lin-ui/form-item/index",
+    "l-toast": "/miniprogram_npm/lin-ui/toast/index",
+    "content-title": "/components/content-title/index",
+    "content-card": "/components/content-card/index"
+  },
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",

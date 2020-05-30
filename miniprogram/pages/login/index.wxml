@@ -1,0 +1,23 @@
+<view style="background:#fff">
+  <content-title name="Login" describe="登陆">
+    <content-card class="content" name="信息填写">
+      <view class='buttun-wrapper'>
+        <l-form name="loginForm" bind:linsubmit="submit" l-form-container-class="l-form-container-class" l-form-btn-class="l-form-btn-class">
+          <l-form-item label="账号:" name="loginFormAccount" rules="{{loginForm.accountRules}}">
+            <l-input id="loginFormAccount" value="{{loginForm.account}}" hide-label show-row="{{false}}" />
+          </l-form-item>
+          <l-form-item label="密码:" name="loginFormPassword" rules="{{loginForm.passwordRules}}">
+            <l-input id="loginFormPassword" value="{{loginForm.password}}" hide-label show-row="{{false}}" />
+          </l-form-item>
+          <view slot="submit">
+            <l-button>登陆</l-button>
+          </view>
+          <view slot="reset">
+            <l-button type="default" plain>重置</l-button>
+          </view>
+        </l-form>
+      </view>
+    </content-card>
+  </content-title>
+</view>
+<l-toast></l-toast>
