@@ -1,2 +1,23 @@
-<!--miniprogram/pages/course-detail/index.wxml-->
-<text>miniprogram/pages/course-detail/index.wxml</text>
+<view class="wrapper">
+  <!-- 如果已经评分过了 就显示内容 -->
+  <!-- 如果没有 就显示试卷 -->
+  <view class="header">{{questionnaire[currentIndex].name}}</view>
+  <view wx:if="{{readyScore}}" class="result" hover-class="none" hover-stop-propagation="false"></view>
+  <view wx:else class="paper" hover-class="none" hover-stop-propagation="false">
+    <view wx:for="{{questionnaire}}" wx:for-index="qIndex" wx:for-item="qItem" wx:key="qItem">
+      <view wx:if="{{currentIndex===qIndex}}" wx:for="{{qItem.questionList}}" wx:key="item" class="item">
+        <view class="title">{{index+1}}. {{item}}</view>
+        <l-radio-group mark:index="{{index}}" bind:linchange="handleChoose" placement="row">
+          <l-radio key="A" class="l-radio">A</l-radio>
+          <l-radio key="B" class="l-radio">B</l-radio>
+          <l-radio key="C" class="l-radio">C</l-radio>
+          <l-radio key="D" class="l-radio">D</l-radio>
+        </l-radio-group>
+      </view>
+    </view>
+    <view class="btn-container">
+      <l-button size="long" shape="semicircle" bind:tap="handleNext">{{btnName}}</l-button>
+    </view>
+  </view>
+</view>
+<l-toast></l-toast>

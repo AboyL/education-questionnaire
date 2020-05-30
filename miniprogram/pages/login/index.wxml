@@ -1,7 +1,7 @@
 <view style="background:#fff">
-  <content-title name="Login" describe="登陆">
-    <content-card class="content" name="信息填写">
-      <view class='buttun-wrapper'>
+  <content-title describe="登陆">
+    <content-card name="信息填写">
+      <view>
         <l-form name="loginForm" bind:linsubmit="submit" l-form-container-class="l-form-container-class" l-form-btn-class="l-form-btn-class">
           <l-form-item label="账号:" name="loginFormAccount" rules="{{loginForm.accountRules}}">
             <l-input id="loginFormAccount" value="{{loginForm.account}}" hide-label show-row="{{false}}" />

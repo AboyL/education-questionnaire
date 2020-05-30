@@ -43,12 +43,12 @@ Page({
 
   async submit ({ detail }) {
     if (detail.isValidate) {
-      console.log(detail)
       const res = await login({
         account: detail.values.loginFormAccount,
         password: detail.values.loginFormPassword
       })
       // 判断是否登陆成功
+      console.log(res)
       const { data } = res
       if (data.length > 0) {
         wx.lin.showToast({
@@ -59,8 +59,7 @@ Page({
             url: '/pages/course-list/index'
           })
         }, 1500);
-        app.globalData.account = data[0].account
-        app.globalData.accountName = data[0].name
+        app.globalData.user = data[0]
         this.setData({
           name: data[0].name
         })

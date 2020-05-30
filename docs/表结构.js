@@ -14,3 +14,8 @@ const questionnaire = {
   key: 'key',
   courseName: 'name'
 }
+
+const question={
+  question:'',
+  anwser:''
+}
