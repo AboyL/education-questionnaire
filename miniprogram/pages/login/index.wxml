@@ -3,11 +3,11 @@
     <content-card name="信息填写">
       <view>
         <l-form name="loginForm" bind:linsubmit="submit" l-form-container-class="l-form-container-class" l-form-btn-class="l-form-btn-class">
-          <l-form-item label="账号:" name="loginFormAccount" rules="{{loginForm.accountRules}}">
+          <l-form-item label-width="130rpx"  label="账号:" name="loginFormAccount" rules="{{loginForm.accountRules}}">
             <l-input id="loginFormAccount" value="{{loginForm.account}}" hide-label show-row="{{false}}" />
           </l-form-item>
-          <l-form-item label="密码:" name="loginFormPassword" rules="{{loginForm.passwordRules}}">
-            <l-input id="loginFormPassword" value="{{loginForm.password}}" hide-label show-row="{{false}}" />
+          <l-form-item label-width="130rpx"  label="密码:" name="loginFormPassword" rules="{{loginForm.passwordRules}}">
+            <l-input type="password" id="loginFormPassword" value="{{loginForm.password}}" hide-label show-row="{{false}}" />
           </l-form-item>
           <view slot="submit">
             <l-button>登陆</l-button>

@@ -1,0 +1,20 @@
+<view class="wrapper" hover-class="none" hover-stop-propagation="false">
+  <content-title describe="{{teacher.name}}">
+    <content-card wx:for-index="courseIndex" wx:for-item="courseItem" wx:key="courseItem" wx:for="{{courseList}}" name="课程1">
+      <view>
+        <view class="score-item">
+          <view class="score">个人总得分: {{courseItem.userScore.score}}</view>
+          <view wx:for="{{courseItem.userScore.scoreArr}}" class="score">
+            Q{{index+1}}得分: {{item}}
+          </view>
+        </view>
+        <view class="score-item">
+          <view class="score">专家评价得分: {{courseItem.expertScore.score}}</view>
+          <view wx:for="{{courseItem.expertScore.expertScoeArr}}" class="score">
+            Q{{index+1}}得分: {{item}}
+          </view>
+        </view>
+      </view>
+    </content-card>
+  </content-title>
+</view>

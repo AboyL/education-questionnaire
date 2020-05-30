@@ -1,0 +1,6 @@
+<view class="wrapper">
+  <view class="header">提交成功</view>
+  <view class="btn-container">
+    <l-button size="long" shape="semicircle" bind:tap="handleGodetail">查看评分</l-button>
+  </view>
+</view>

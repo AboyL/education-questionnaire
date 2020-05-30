@@ -48,18 +48,23 @@ Page({
         password: detail.values.loginFormPassword
       })
       // 判断是否登陆成功
-      console.log(res)
       const { data } = res
       if (data.length > 0) {
         wx.lin.showToast({
           title: '登陆成功'
         })
+        app.globalData.user = data[0]
         setTimeout(() => {
+          if (app.globalData.user.isAdmin) {
+            wx.navigateTo({
+              url: '/pages/teacher-list/index'
+            })
+            return
+          }
           wx.navigateTo({
             url: '/pages/course-list/index'
           })
         }, 1500);
-        app.globalData.user = data[0]
         this.setData({
           name: data[0].name
         })

@@ -1,2 +1,9 @@
-<!--miniprogram/pages/teacher-list/index.wxml-->
-<text>miniprogram/pages/teacher-list/index.wxml</text>
+<view class="wrapper">
+  <view class="header">教师列表</view>
+  <view class="common-list">
+    <view class="common-item" mark:id="{{item._id}}" mark:name="{{item.name}}" wx:for="{{list}}" wx:key="_id" bind:tap="handleGoTeacherDetail">
+      {{item.name}}
+    </view>
+  </view>
+</view>
+<l-toast></l-toast>
