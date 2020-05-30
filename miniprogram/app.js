@@ -10,13 +10,18 @@ App({
 
     this.globalData = {
       user: {
-        _id:'baada3ac5ed12d9b0005b0632308eac3',
+        _id: 'baada3ac5ed12d9b0005b0632308eac3',
         account: 'test',
-        password:'test',
+        password: 'test',
         isAdmin: false,
         isExpert: false,
         name: '测试账号',
-        questionnaire: {}
+        questionnaire: {
+          c1: [
+            ['A', 'B'],
+            ['C', 'D'],
+          ]
+        }
       }
     }
   }

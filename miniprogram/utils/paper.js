@@ -1,3 +1,5 @@
+import { getExpertList } from '../servers/index'
+
 export const questionnaire = [
   {
     name: '问卷1',
@@ -13,6 +15,64 @@ export const questionnaire = [
     ]
   }
 ]
+
+const optionObj = {
+  A: 95,
+  B: 80,
+  C: 65,
+  D: 50,
+}
+const WeightedArray = [0.0496, 0.01225, 0.532, 0.2959]
+
+export const getScore = (arr) => {
+  // arr为二维数组
+  let score = 0
+  let scoreArr = []
+  arr.forEach((item, index) => {
+    let s = 0
+    item.forEach(option => {
+      s += optionObj[option]
+    })
+    const r = s * WeightedArray[index]
+    scoreArr.push(r)
+    score += r
+  })
+  return {
+    score,
+    scoreArr
+  }
+}
+
+export const getExpertScore = async (key) => {
+  const expertList = await getExpertList()
+  let score = 0
+  let expertScoeArr = []
+  let outExpertScoeArr = []
+  let len = 0
+  expertList.data.forEach(expert => {
+    if (expert && expert.questionnaire && expert.questionnaire[key]) {
+      const e = getScore(expert.questionnaire[key])
+      score += e.score
+      expertScoeArr.push(e.scoreArr)
+      len = Math.max(len, e.scoreArr.length)
+    }
+
+  })
+
+  if (expertList.data.length) {
+    score = score / expertList.data.length
+    for (let i = 0; i < len; i++) {
+      outExpertScoeArr[i] = 0
+      expertScoeArr.forEach((s) => {
+        outExpertScoeArr[i] += s[i] || 0
+      })
+    }
+  }
+  return {
+    score,
+    expertScoeArr: outExpertScoeArr
+  }
+}
 
 // export const questionnaire = [
 //   {

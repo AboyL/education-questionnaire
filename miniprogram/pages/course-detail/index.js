@@ -1,6 +1,7 @@
 // miniprogram/pages/course-detail/index.js
-import { questionnaire } from '../../utils/paper'
+import { questionnaire, getScore,getExpertScore } from '../../utils/paper'
 import { addAnwser } from '../../servers/index'
+
 const app = getApp()
 
 Page({
@@ -9,24 +10,29 @@ Page({
    * 页面的初始数据
    */
   data: {
+    courseName: '',
     readyScore: false,
+    userScore: 0,
+    expertScore:0,
     currentIndex: 0,
     answerList: [[]],
     questionnaire,
     btnName: questionnaire.length === 1 ? '提交' : '下一步'
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  async onLoad (options) {
     // 根据实际情况进行判断
     // 根据 questionnaire 生成对应的数组
     const { key, name } = options
     const user = JSON.parse(JSON.stringify(app.globalData.user))
     if (user.questionnaire[key]) {
+      const expertScore=await getExpertScore(key)
       this.setData({
-        readyScore: true
+        readyScore: true,
+        key,
+        courseName: name,
+        expertScore,
+        userScore: getScore(user.questionnaire[key])
       })
       return
     }
@@ -41,7 +47,7 @@ Page({
       readyScore: false,
       answerList,
       key,
-      name
+      courseName: name
     })
   },
   handleChoose (e) {

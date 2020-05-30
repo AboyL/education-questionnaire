@@ -1,9 +1,20 @@
 <view class="wrapper">
   <!-- 如果已经评分过了 就显示内容 -->
   <!-- 如果没有 就显示试卷 -->
-  <view class="header">{{questionnaire[currentIndex].name}}</view>
-  <view wx:if="{{readyScore}}" class="result" hover-class="none" hover-stop-propagation="false"></view>
+  <view wx:if="{{readyScore}}" class="result" hover-class="none" hover-stop-propagation="false">
+    <view class="header">{{courseName}}</view>
+    <view class="score-item">
+      <view class="score">个人总得分: {{userScore.score}}</view>
+      <view wx:for="{{userScore.scoreArr}}" class="score">Q{{index+1}}得分: {{item}}</view>
+    </view>
+    <view class="score-item">
+      <view class="score">专家评价得分: {{expertScore.score}}</view>
+      <view wx:for="{{expertScore.expertScoeArr}}" class="score">Q{{index+1}}得分: {{item}}</view>
+    </view>
+    <view class="score">总得分: {{userScore.score+expertScore.score}}</view>
+  </view>
   <view wx:else class="paper" hover-class="none" hover-stop-propagation="false">
+    <view class="header">{{questionnaire[currentIndex].name}}</view>
     <view wx:for="{{questionnaire}}" wx:for-index="qIndex" wx:for-item="qItem" wx:key="qItem">
       <view wx:if="{{currentIndex===qIndex}}" wx:for="{{qItem.questionList}}" wx:key="item" class="item">
         <view class="title">{{index+1}}. {{item}}</view>

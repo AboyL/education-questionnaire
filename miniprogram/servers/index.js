@@ -18,6 +18,14 @@ export const getCourseList = () => {
   return db.collection('courses').where({}).get()
 }
 
+export const getExpertList = () => {
+  const db = wx.cloud.database()
+  // 查询当前用户所有的 counters
+  return db.collection('users').where({
+    isExpert: true
+  }).get()
+}
+
 export const addAnwser = ({
   answerList,
   key

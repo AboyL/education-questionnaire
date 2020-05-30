@@ -3,7 +3,8 @@
     "pages/login/index",
     "pages/databaseGuide/databaseGuide",
     "pages/course-list/index",
-    "pages/course-detail/index"
+    "pages/course-detail/index",
+    "pages/teacher-list/index"
   ],
   "usingComponents": {
     "l-button": "/miniprogram_npm/lin-ui/button/index",
