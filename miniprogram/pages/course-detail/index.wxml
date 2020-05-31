@@ -17,7 +17,7 @@
     <view class="header">{{questionnaire[currentIndex].name}}</view>
     <view wx:for="{{questionnaire}}" wx:for-index="qIndex" wx:for-item="qItem" wx:key="qItem">
       <view wx:if="{{currentIndex===qIndex}}" wx:for="{{qItem.questionList}}" wx:key="item" class="item">
-        <view class="title">{{index+1}}. {{item}}</view>
+        <view class="title">{{index+1}}. {{item.question}}</view>
         <l-radio-group mark:index="{{index}}" bind:linchange="handleChoose" placement="row">
           <l-radio key="A" class="l-radio">A</l-radio>
           <l-radio key="B" class="l-radio">B</l-radio>

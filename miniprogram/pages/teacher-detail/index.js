@@ -4,7 +4,7 @@ import { getScore, getExpertScore } from '../../utils/paper'
 Page({
 
   data: {
-    teacher:{},
+    teacher: {},
     courseList: []
   },
 
@@ -15,6 +15,7 @@ Page({
       if (teacher.questionnaire && teacher.questionnaire[course.key]) {
         course.userScore = getScore(teacher.questionnaire[course.key])
         course.expertScore = await getExpertScore(course.key)
+        debugger
       }
     }
     this.setData({
